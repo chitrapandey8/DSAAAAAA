@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class intersectionofarray {
 
@@ -16,27 +17,57 @@ public class intersectionofarray {
 //        }
 //        System.out.println(ans);
 
-    public static  void Twopointer(int[] arr, int[] brr){
+//    public static  void Twopointer(int[] arr, int[] brr){
+//        int i = 0;
+//        int j = 0;
+//        ArrayList<Integer> ans =  new ArrayList<>();
+//        while(i< arr.length&& j< brr.length){
+//            if(arr[i] == brr[j]){
+//                    ans.add(arr[i]);
+//                    i++;
+//                    j++;
+//            } else if(arr[i] < brr[j]){
+//                i++;
+//            } else{
+//                j++;
+//            }
+//        }
+//        System.out.println(ans);
+
+    public static void noduplicates(int[] nums1, int[] nums2){
         int i = 0;
         int j = 0;
-        ArrayList<Integer> ans =  new ArrayList<>();
-        while(i< arr.length&& j< brr.length){
-            if(arr[i] == brr[j]){
-                    ans.add(arr[i]);
-                    i++;
-                    j++;
-            } else if(arr[i] < brr[j]){
+        int n = nums1.length;
+        int m = nums2.length;
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        ArrayList<Integer> ans = new ArrayList<>();
+        while(i<n && j<m){
+            if(nums1[i] < nums2[j]){
                 i++;
+            } else if (nums1[i] > nums2[j]) {
+                j++;
             } else{
+                if(ans.isEmpty() || ans.get(ans.size() - 1) != nums1[i]){
+                    ans.add(nums1[i]);
+                }
+                i++;
                 j++;
             }
+
         }
-        System.out.println(ans);
+        int[] Result = new int[ans.size()];
+        for(int k = 0; k<ans.size(); k++){
+            Result[k] = ans.get(k);
+        }
+        System.out.println(Result);
     }
     public static void main(String[] args) {
-        int[] arr = {1, 2, 2, 3, 3, 4, 4, 5, 6};
-        int[] brr = {2, 3, 3, 5, 6, 6, 7};
+        int[] arr = {1, 2, 2, 1};
+        int[] brr = {2, 2};
+        noduplicates(arr, brr);
+
         //bruteforce(arr, brr);
-        Twopointer(arr, brr);
+       // Twopointer(arr, brr);
     }
 }
