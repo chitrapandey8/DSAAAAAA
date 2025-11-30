@@ -30,7 +30,6 @@ public class SubarraySorted {
     }
 
     public static void Better(int[] arr) {
-
         int maxi = Integer.MIN_VALUE;
         int mini = Integer.MAX_VALUE;
         for (int i = 0; i < arr.length; i++) {
@@ -74,7 +73,7 @@ public class SubarraySorted {
 
     public static void main(String[] args) {
         int[] arr = {1,2,4,7,10,11,7,12,7,7,16,18,19};
-        brute(arr);
+//        brute(arr);
 //        Brute(arr);
 //        Better(arr);
     }
